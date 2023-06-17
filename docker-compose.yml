@@ -4,9 +4,9 @@ services:
   bench:
     image: bench
     build: ./rust
-    volumes: 
+    volumes:
       - type: bind
         source: ./rust/causal-hub
         target: /home/causal-hub
     working_dir: /home/causal-hub
-    command: /root/.cargo/bin/cargo build
+    command: /root/.cargo/bin/cargo bench
