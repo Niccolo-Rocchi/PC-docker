@@ -1,11 +1,20 @@
 version: "3.9"
 services:
 
-  bench:
-    image: bench
-    build: .
+  rust-bench:
+    image: rust-bench
+    build: ./Rust/
     volumes:
       - type: bind
-        source: ./criterion
+        source: ./Rust/criterion
         target: /causal-hub/target/criterion
     command: cargo bench
+    
+  r-bench:
+    image: r-bench
+    build: ./R/
+    volumes:
+      - type: bind
+        source: ./R/
+        target: /causal-hub/R/
+    command: Rscript ./R/bnlearn_benches.r
